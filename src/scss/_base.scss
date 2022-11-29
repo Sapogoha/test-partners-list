@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400&subset=cyrillic-ext');
+@import './mixins';
+
+:root {
+  --color-black: #151317;
+  --color-violet: #512689;
+  --color-gray: #808185;
+  --color-gray-light: #f8f8f8;
+  --color-red: #ff6161;
+  --color-white: #ffffff;
+
+  --font-family: 'Roboto', sans-serif;
+
+  --fw-400: 400;
+
+  --fs-20: 2rem;
+
+  --lh-23: 2.3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  @include font(var(--fw-400), var(--fs-20), var(--lh-23));
+  color: var(--color-black);
+  background-color: var(--color-white);
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
