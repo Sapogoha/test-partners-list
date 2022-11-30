@@ -11,10 +11,21 @@
 
   --font-family: 'Roboto', sans-serif;
 
+  --box-shadow: 0px 0.4rem 2rem rgba(0, 0, 0, 0.08);
+
+  --border-radius-8: 0.8rem;
+  --border-radius-16: 1.6rem;
+
   --fw-400: 400;
 
+  --fs-10: 1rem;
+  --fs-14: 1.4rem;
+  --fs-16: 1.6rem;
   --fs-20: 2rem;
 
+  --lh-14: 1.4rem;
+  --lh-16: 1.6rem;
+  --lh-22: 2.2rem;
   --lh-23: 2.3rem;
 }
 
@@ -39,7 +50,7 @@ html {
 
 body {
   font-family: var(--font-family);
-  @include font(var(--fw-400), var(--fs-20), var(--lh-23));
+  @include font(var(--fs-20), var(--lh-23));
   color: var(--color-black);
   background-color: var(--color-white);
   min-height: 100vh;

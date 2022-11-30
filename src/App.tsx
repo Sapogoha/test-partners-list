@@ -7,15 +7,16 @@ import PartnersPage from './pages/PartnersPage/PartnersPage';
 import PartnerPage from './pages/PartnerPage/PartnerPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
+import links from './constants/links';
+
 function App() {
-  const start = '/test-partners-list';
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={`${start}/`} element={<PartnersPage />} />
-        <Route path={`${start}/partner/:id`} element={<PartnerPage />} />
-        <Route path={`${start}/signin`} element={<SignInPage />} />
-        <Route path={`${start}/signup`} element={<SignUpPage />} />
+        <Route path={links.main} element={<PartnersPage />} />
+        <Route path={links.partner} element={<PartnerPage />} />
+        <Route path={links.signin} element={<SignInPage />} />
+        <Route path={links.signup} element={<SignUpPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

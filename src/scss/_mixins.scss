@@ -1,5 +1,113 @@
-@mixin font($fw, $fs, $lh) {
+@mixin font($fs, $lh, $fw: 400) {
   font-weight: $fw;
   font-size: $fs;
   line-height: $lh;
+}
+
+@mixin border($c) {
+  border: 0.1rem solid $c;
+}
+
+@mixin input {
+  .input {
+    width: 100%;
+    @include font(var(--fs-14), var(--lh-16));
+    padding: 1.2rem 0.8rem 1.2rem 1.6rem;
+    background: var(--color-gray-light);
+    border-radius: var(--border-radius-8);
+    color: var(--color-gray);
+    height: 4.8rem;
+    @include border(transparent);
+    &:hover,
+    &:focus,
+    &:active {
+      @include border(var(--color-gray));
+    }
+    &-error {
+      @include border(var(--color-red));
+    }
+  }
+}
+
+@mixin form {
+  .wrapper {
+    min-height: 100vh;
+    .form {
+      margin-top: 6.4rem;
+      width: 100%;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius-16);
+      .header {
+        @include font(var(--fs-20), var(--lh-23));
+        margin-bottom: 1.6rem;
+      }
+      .itemWrapper {
+        display: flex;
+        flex-direction: column;
+        &:not(:last-of-type) {
+          margin-bottom: 1.6rem;
+        }
+        &:last-of-type {
+          margin-bottom: 2.4rem;
+        }
+
+        .label {
+          @include font(var(--fs-16), var(--lh-22));
+          margin-bottom: 0.8rem;
+        }
+        @include input();
+        .inputWrapper {
+          position: relative;
+          width: 100%;
+          @include input;
+          .showIcon {
+            position: absolute;
+            right: 0.8rem;
+            top: 1.2rem;
+            width: 2.4rem;
+            height: 2.4rem;
+          }
+        }
+
+        .error {
+          @include font(var(--fs-10), var(--lh-12));
+          color: var(--color-red);
+        }
+      }
+
+      .button {
+        background-color: var(--color-violet);
+        border-radius: var(--border-radius-8);
+        color: var(--color-white);
+        @include font(var(--fs-16), var(--lh-22));
+        padding-top: 1.3rem;
+        padding-bottom: 1.3rem;
+      }
+      .redirect {
+        margin-top: 2.4rem;
+        @include font(var(--fs-16), var(--lh-22));
+        text-align: center;
+        .link {
+          color: var(--color-violet);
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 500px) {
+    .wrapper {
+      position: relative;
+      .form {
+        position: absolute;
+        margin-top: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50rem;
+      }
+    }
+  }
 }
