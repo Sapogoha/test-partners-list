@@ -1,0 +1,10 @@
+@import '../../../scss/_mixins';
+
+.redirect {
+  margin-top: 2.4rem;
+  @include font(var(--fs-16), var(--lh-22));
+  text-align: center;
+  .link {
+    color: var(--color-violet);
+  }
+}

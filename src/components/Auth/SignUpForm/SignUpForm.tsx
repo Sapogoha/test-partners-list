@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useAppDispatch } from '../../../store/hooks';
+import signUp from '../../../store/thunks/postSignUp';
+import ISignInForm from '../../../types/IAuth';
 
-import eye from '../../assets/eye.svg';
-import eyeOff from '../../assets/eyeOff.svg';
+import RedirectLink from '../RedirectLink/RedirectLink';
 
-import links from '../../constants/links';
+import eye from '../../../assets/eye.svg';
+import eyeOff from '../../../assets/eyeOff.svg';
+
+import links from '../../../constants/links';
 
 import styles from './SignUpForm.module.scss';
 
@@ -34,7 +38,7 @@ const schema = yup
       .required('Введите пароль')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/,
-        'Пароль должен содержать 6 символов: минимум одну строчную и одну заглавную букву, одну цифру'
+        'Пароль должен содержать от 6 символов: минимум одну строчную и одну заглавную букву, одну цифру'
       ),
     confirmPassword: yup
       .string()
@@ -44,6 +48,7 @@ const schema = yup
   .required();
 
 function SignUpForm() {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -52,13 +57,22 @@ function SignUpForm() {
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: IFormInputs) => console.log(data);
+
+  const dummyData: ISignInForm = {
+    email: 'eve.holt@reqres.in',
+    password: 'pistol',
+  };
+
+  const onSubmit = (data: IFormInputs) => {
+    console.log(data);
+    dispatch(signUp(dummyData));
+  };
 
   const [iconShowPass, setIconShowPass] = useState(false);
   const [iconShowConfirmPass, setIconShowConfirmPass] = useState(false);
 
   return (
-    <main className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h2 className={styles.header}>Регистрация</h2>
         <div className={styles.itemWrapper}>
@@ -159,16 +173,9 @@ function SignUpForm() {
         <button type="submit" className={styles.button}>
           Зарегистрироваться
         </button>
-
-        <div className={styles.redirect}>
-          Уже есть аккаунт?
-          <Link to={links.signin} className={styles.link}>
-            {' '}
-            Войти
-          </Link>
-        </div>
+        <RedirectLink curPage={links.signup} />
       </form>
-    </main>
+    </div>
   );
 }
 

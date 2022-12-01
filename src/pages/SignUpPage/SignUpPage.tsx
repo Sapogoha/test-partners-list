@@ -1,9 +1,14 @@
 import React from 'react';
 
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import AuthLayout from '../../components/Auth/AuthLayout/AuthLayout';
+import SignUpForm from '../../components/Auth/SignUpForm/SignUpForm';
 
 function SignUpPage() {
-  return <SignUpForm />;
+  return (
+    <AuthLayout>
+      <SignUpForm />
+    </AuthLayout>
+  );
 }
 
 export default SignUpPage;

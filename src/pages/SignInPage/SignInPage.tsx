@@ -1,9 +1,14 @@
 import React from 'react';
 
-import SignInForm from '../../components/SignInForm/SignInForm';
+import AuthLayout from '../../components/Auth/AuthLayout/AuthLayout';
+import SignInForm from '../../components/Auth/SignInForm/SignInForm';
 
 function SignInPage() {
-  return <SignInForm />;
+  return (
+    <AuthLayout>
+      <SignInForm />
+    </AuthLayout>
+  );
 }
 
 export default SignInPage;

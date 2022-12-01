@@ -31,7 +31,6 @@
 
 @mixin form {
   .wrapper {
-    min-height: 100vh;
     .form {
       margin-top: 6.4rem;
       width: 100%;
@@ -86,26 +85,13 @@
         padding-top: 1.3rem;
         padding-bottom: 1.3rem;
       }
-      .redirect {
-        margin-top: 2.4rem;
-        @include font(var(--fs-16), var(--lh-22));
-        text-align: center;
-        .link {
-          color: var(--color-violet);
-        }
-      }
     }
   }
 
   @media only screen and (min-width: 500px) {
     .wrapper {
-      position: relative;
       .form {
-        position: absolute;
         margin-top: 0;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 50rem;
       }
     }

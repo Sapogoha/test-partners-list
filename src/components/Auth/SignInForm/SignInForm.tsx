@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useAppDispatch } from '../../../store/hooks';
+import signIn from '../../../store/thunks/postSignIn';
+import IAuth from '../../../types/IAuth';
 
-import eye from '../../assets/eye.svg';
-import eyeOff from '../../assets/eyeOff.svg';
+import RedirectLink from '../RedirectLink/RedirectLink';
 
-import links from '../../constants/links';
+import eye from '../../../assets/eye.svg';
+import eyeOff from '../../../assets/eyeOff.svg';
+
+import links from '../../../constants/links';
 
 import styles from './SignInForm.module.scss';
-
-interface IFormInputs {
-  email: string;
-  password: string;
-}
 
 const schema = yup
   .object({
@@ -24,26 +23,28 @@ const schema = yup
       .required('Введите пароль')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/,
-        'Пароль должен содержать 6 символов: минимум одну строчную и одну заглавную букву, одну цифру'
+        'Пароль должен содержать от 6 символов: минимум одну строчную и одну заглавную букву, одну цифру'
       ),
   })
   .required();
 
 function SignInForm() {
+  console.log(typeof links.signin);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInputs>({
+  } = useForm<IAuth>({
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const dispatch = useAppDispatch();
+  const onSubmit = (data: IAuth) => dispatch(signIn(data));
 
   const [iconShowPass, setIconShowPass] = useState(false);
 
   return (
-    <main className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h2 className={styles.header}>Вход</h2>
         <div className={styles.itemWrapper}>
@@ -97,15 +98,9 @@ function SignInForm() {
         <button type="submit" className={styles.button}>
           Войти
         </button>
-        <div className={styles.redirect}>
-          Еще нет аккаунта?{' '}
-          <Link to={links.signup} className={styles.link}>
-            {' '}
-            Зарегистрироваться
-          </Link>
-        </div>
+        <RedirectLink curPage={links.signin} />
       </form>
-    </main>
+    </div>
   );
 }
 
