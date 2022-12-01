@@ -1,0 +1,18 @@
+@import '../../../scss/_mixins';
+
+.notification {
+  margin-top: 2rem;
+  min-height: 2rem;
+  padding: 1rem 3rem;
+  @include font(var(--fs-16), var(--lh-22));
+  border-radius: var(--border-radius-8);
+  text-align: center;
+  &-loading {
+    @include border(var(--color-yellow));
+    background-color: var(--color-yellow-light);
+  }
+  &-error {
+    @include border(var(--color-red));
+    background-color: var(--color-red-light);
+  }
+}

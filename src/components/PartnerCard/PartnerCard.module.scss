@@ -1,0 +1,29 @@
+@import '../../scss/_mixins';
+
+.partner {
+  width: 100%;
+
+  background: var(--color-white);
+  box-shadow: var(--box-shadow-card);
+  border-radius: var(--border-radius-10);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  .img {
+    margin-top: 3.6rem;
+    width: 12.4rem;
+    height: 12.4rem;
+    border-radius: var(--border-radius-50);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .name {
+    @include font(var(--fs-20), var(--lh-23));
+    color: var(--color-black);
+    margin-top: 1.6rem;
+    margin-bottom: 6.4rem;
+  }
+}

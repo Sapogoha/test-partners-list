@@ -29,7 +29,6 @@ const schema = yup
   .required();
 
 function SignInForm() {
-  console.log(typeof links.signin);
   const {
     register,
     handleSubmit,

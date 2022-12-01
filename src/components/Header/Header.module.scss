@@ -1,0 +1,53 @@
+@import '../../scss/_mixins';
+
+.wrapper {
+  width: 100%;
+  background-color: var(--color-violet);
+  color: var(--color-gray-light);
+  padding-top: 6.4rem;
+  padding-bottom: 6.4rem;
+  position: relative;
+  .header {
+    text-align: center;
+    @include font(var(--fs-36), var(--lh-42));
+    padding-bottom: 1.6rem;
+  }
+  .headerText {
+    text-align: center;
+    @include font(var(--fs-16), var(--lh-19));
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .btn {
+    position: absolute;
+    top: 2.3rem;
+    right: 2.7rem;
+    &-small {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .wrapper {
+    .header {
+      @include font(var(--fs-64), var(--lh-75));
+    }
+    .headerText {
+      max-width: 84.6rem;
+      @include font(var(--fs-20), var(--lh-23));
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .btn {
+      @include font(var(--fs-16), var(--lh-22));
+      padding: 0.8rem 1.6rem;
+      top: 3.2rem;
+      right: 5.5%;
+      color: var(--color-gray-light);
+      @include border(var(--color-gray-light));
+      border-radius: var(--border-radius-8);
+    }
+  }
+}

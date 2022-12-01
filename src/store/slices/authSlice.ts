@@ -19,7 +19,12 @@ const initialState: IAuth = {
 const authSlice = createSlice({
   name: 'authSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    removeToken(state) {
+      localStorage.removeItem('token');
+      state.token = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(signIn.pending, (state) => {
       state.loading = true;
@@ -53,5 +58,7 @@ const authSlice = createSlice({
     });
   },
 });
+
+export const { removeToken } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -12,7 +12,6 @@ const signUp = createAsyncThunk<
     rejectValue: string;
   }
 >('signUp/post', async (body, thunkApi) => {
-  console.log(body);
   try {
     const response = await fetch('https://reqres.in/api/register', {
       method: 'POST',
@@ -23,13 +22,11 @@ const signUp = createAsyncThunk<
     });
 
     if (!response.ok) {
-      console.log(response.body);
       throw new Error();
     } else {
       return response.json();
     }
   } catch (err) {
-    console.log(err);
     return thunkApi.rejectWithValue('Ошибка регистрации');
   }
 });

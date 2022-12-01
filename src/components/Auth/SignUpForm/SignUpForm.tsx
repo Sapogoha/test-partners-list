@@ -64,6 +64,8 @@ function SignUpForm() {
   };
 
   const onSubmit = (data: IFormInputs) => {
+    // при реальном бэке отправлял бы туда данные для регистрации и не выводил в консоль
+    // отправка логина и пароля из dummyData - условие reqres.in
     console.log(data);
     dispatch(signUp(dummyData));
   };

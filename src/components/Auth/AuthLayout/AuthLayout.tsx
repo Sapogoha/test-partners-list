@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../store/hooks';
 
+import Notification from '../../common/Notification/Notification';
+
 import links from '../../../constants/links';
 
 import styles from './AuthLayout.module.scss';
@@ -30,23 +32,13 @@ function AuthLayout({ children }: Props) {
     }
   }, [token, error, loading, navigate]);
 
-  const notificationLoading = (
-    <div className={`${styles.notification} ${styles['notification-loading']}`}>
-      Загрузка
-    </div>
-  );
-
-  const notificationError = (
-    <div className={`${styles.notification} ${styles['notification-error']}`}>
-      Ошибка
-    </div>
-  );
-
   return (
     <main className={styles.wrapper}>
       {children}
-      {loading && notification && notificationLoading}
-      {error && notification && notificationError}
+      {loading && notification && (
+        <Notification type="loading" text="Загрузка" />
+      )}
+      {error && notification && <Notification type="error" text="Ошибка" />}
     </main>
   );
 }

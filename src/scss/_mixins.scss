@@ -97,3 +97,7 @@
     }
   }
 }
+
+@mixin link {
+  color: var(--color-violet);
+}
