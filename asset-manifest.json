@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/test-partners-list/static/css/main.0691ded7.css",
+    "main.js": "/test-partners-list/static/js/main.9e156ce9.js",
+    "static/media/eyeOff.svg": "/test-partners-list/static/media/eyeOff.038123d1cbd5903978aed2f4ce72fb83.svg",
+    "static/media/eye.svg": "/test-partners-list/static/media/eye.4fe7dc7f7e1b9f9bb15ef7efcd58f23c.svg",
+    "static/media/logout.svg": "/test-partners-list/static/media/logout.029da92b45a01830dacb5be599ea4d49.svg",
+    "static/media/showMore.svg": "/test-partners-list/static/media/showMore.050c724a5e29dff2932ad1942969c946.svg",
+    "static/media/phone.svg": "/test-partners-list/static/media/phone.49ab2f07dcf42699a44783d936807c90.svg",
+    "static/media/back.svg": "/test-partners-list/static/media/back.9c92895c6130f26bff09e95fe53fabea.svg",
+    "index.html": "/test-partners-list/index.html",
+    "static/media/email.svg": "/test-partners-list/static/media/email.404b6dc69a7a7d62e728f0d5b60ff0fe.svg",
+    "static/media/emptyHeart.svg": "/test-partners-list/static/media/emptyHeart.87b226b3e208265a5a0661cbd1a16dc8.svg",
+    "static/media/filledHeart.svg": "/test-partners-list/static/media/filledHeart.4ce90f45a3feb6e27018788c95bba45b.svg",
+    "main.0691ded7.css.map": "/test-partners-list/static/css/main.0691ded7.css.map",
+    "main.9e156ce9.js.map": "/test-partners-list/static/js/main.9e156ce9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0691ded7.css",
+    "static/js/main.9e156ce9.js"
+  ]
+}
