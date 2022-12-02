@@ -38,6 +38,7 @@ const partnersSlice = createSlice({
       state.partners = [];
       state.page = 1;
       state.showMore = true;
+      localStorage.removeItem('partnersSlice');
     },
     setPage(state) {
       state.page += 1;

@@ -43,7 +43,7 @@ function Header({ img, name }: Props) {
   return (
     <header className={styles.wrapper}>
       <div className={styles.btnWrapper}>
-        {token && width > 499 ? (
+        {token && width > 499 && (
           <Button
             type="button"
             className={`${styles.btn}  ${styles['btn-exit']}`}
@@ -51,7 +51,8 @@ function Header({ img, name }: Props) {
           >
             Выход
           </Button>
-        ) : (
+        )}
+        {token && width < 500 && (
           <Button
             onClick={clickExitHandler}
             type="button"

@@ -4,6 +4,9 @@
   margin-top: 2rem;
   min-height: 2rem;
   padding: 1rem 3rem;
+  max-width: 136rem;
+  margin-left: auto;
+  margin-right: auto;
   @include font(var(--fs-16), var(--lh-22));
   border-radius: var(--border-radius-8);
   text-align: center;
