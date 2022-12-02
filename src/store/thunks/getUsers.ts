@@ -21,6 +21,7 @@ interface IPartnerModified {
   id: number;
   name: string;
   avatar: string;
+  likeBtn: boolean;
 }
 
 const getUsers = createAsyncThunk<
@@ -50,6 +51,7 @@ const getUsers = createAsyncThunk<
         id: item.id,
         name: `${item.first_name} ${item.last_name}`,
         avatar: item.avatar,
+        likeBtn: false,
       }));
     }
   } catch (err) {

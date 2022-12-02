@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import IAuth from '../../types/IAuth';
+import IAuth from '../../components/Auth/IAuth';
 
 interface IResponse {
   id: number;

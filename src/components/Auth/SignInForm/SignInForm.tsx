@@ -4,9 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAppDispatch } from '../../../store/hooks';
 import signIn from '../../../store/thunks/postSignIn';
-import IAuth from '../../../types/IAuth';
+import IAuth from '../IAuth';
 
 import RedirectLink from '../RedirectLink/RedirectLink';
+import Button from '../../Button/Button';
 
 import eye from '../../../assets/eye.svg';
 import eyeOff from '../../../assets/eyeOff.svg';
@@ -93,10 +94,9 @@ function SignInForm() {
             <div className={styles.error}>{errors.password.message}</div>
           )}
         </div>
-
-        <button type="submit" className={styles.button}>
+        <Button type="submit" className={styles.button}>
           Войти
-        </button>
+        </Button>
         <RedirectLink curPage={links.signin} />
       </form>
     </div>

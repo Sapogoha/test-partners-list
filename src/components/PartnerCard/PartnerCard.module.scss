@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
+
+  position: relative;
 
   .img {
     margin-top: 3.6rem;
@@ -19,11 +20,20 @@
     border-radius: var(--border-radius-50);
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
   }
   .name {
     @include font(var(--fs-20), var(--lh-23));
     color: var(--color-black);
     margin-top: 1.6rem;
     margin-bottom: 6.4rem;
+    cursor: pointer;
+    @include hover;
+  }
+
+  .likeBtn {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
   }
 }

@@ -3,7 +3,7 @@ import { useWindowSize } from 'usehooks-ts';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-import Button from './Button/Button';
+import Button from '../Button/Button';
 import MainHeader from './MainHeader/MainHeader';
 import PartnerHeader from './PartnerHeader/PartnerHeader';
 

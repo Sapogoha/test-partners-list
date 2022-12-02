@@ -39,6 +39,7 @@
     @include border(var(--color-black));
     border-radius: var(--border-radius-8);
     padding: 0.8rem 1.6rem;
+    @include hover;
 
     .showMoreText {
       @include font(var(--fs-16), var(--lh-22));

@@ -5,6 +5,7 @@ interface IPartnerModified {
   id: number;
   name: string;
   avatar: string;
+  likeBtn: boolean;
 }
 
 interface IPartners {
@@ -15,12 +16,18 @@ interface IPartners {
   showMore: boolean;
 }
 
+const savedPartnersSlice = localStorage.getItem('partnersSlice');
+
 const initialState: IPartners = {
-  partners: [],
+  partners:
+    savedPartnersSlice !== null ? JSON.parse(savedPartnersSlice).partners : [],
   loading: false,
   error: false,
-  page: 1,
-  showMore: true,
+  page: savedPartnersSlice !== null ? JSON.parse(savedPartnersSlice).page : 1,
+  showMore:
+    savedPartnersSlice !== null
+      ? JSON.parse(savedPartnersSlice).showMore
+      : true,
 };
 
 const partnersSlice = createSlice({
@@ -28,12 +35,30 @@ const partnersSlice = createSlice({
   initialState,
   reducers: {
     removePartners(state) {
-      state.partners = initialState.partners;
-      state.page = initialState.page;
-      state.showMore = initialState.showMore;
+      state.partners = [];
+      state.page = 1;
+      state.showMore = true;
     },
     setPage(state) {
       state.page += 1;
+    },
+    toggleLikeBtn(state, action) {
+      state.partners = [
+        ...state.partners.map((partner) => {
+          if (partner.id === action.payload) {
+            partner.likeBtn = !partner.likeBtn;
+          }
+          return partner;
+        }),
+      ];
+      localStorage.setItem(
+        'partnersSlice',
+        JSON.stringify({
+          partners: state.partners,
+          page: state.page,
+          showMore: state.showMore,
+        })
+      );
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +73,14 @@ const partnersSlice = createSlice({
         state.showMore = false;
       }
       state.partners = [...state.partners, ...payload];
+      localStorage.setItem(
+        'partnersSlice',
+        JSON.stringify({
+          partners: state.partners,
+          page: state.page,
+          showMore: state.showMore,
+        })
+      );
     });
     builder.addCase(getUsers.rejected, (state, { payload }) => {
       state.loading = false;
@@ -56,6 +89,6 @@ const partnersSlice = createSlice({
   },
 });
 
-export const { removePartners, setPage } = partnersSlice.actions;
+export const { removePartners, setPage, toggleLikeBtn } = partnersSlice.actions;
 
 export default partnersSlice.reducer;

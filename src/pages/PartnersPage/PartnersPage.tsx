@@ -38,7 +38,7 @@ function PartnersPage() {
   }, [partners, error, loading]);
 
   useEffect(() => {
-    if (token) {
+    if (token && partners.length < 1) {
       dispatch(getUsers(page));
       dispatch(setPage());
     }
@@ -81,6 +81,7 @@ function PartnersPage() {
                 key={partner.id}
                 img={partner.avatar}
                 name={partner.name}
+                likeBtn={partner.likeBtn}
               />
             ))}
           </div>

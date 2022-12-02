@@ -4,9 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAppDispatch } from '../../../store/hooks';
 import signUp from '../../../store/thunks/postSignUp';
-import ISignInForm from '../../../types/IAuth';
+import IAuth from '../IAuth';
 
 import RedirectLink from '../RedirectLink/RedirectLink';
+import Button from '../../Button/Button';
 
 import eye from '../../../assets/eye.svg';
 import eyeOff from '../../../assets/eyeOff.svg';
@@ -58,7 +59,7 @@ function SignUpForm() {
     resolver: yupResolver(schema),
   });
 
-  const dummyData: ISignInForm = {
+  const dummyData: IAuth = {
     email: 'eve.holt@reqres.in',
     password: 'pistol',
   };
@@ -171,10 +172,9 @@ function SignUpForm() {
             <div className={styles.error}>{errors.confirmPassword.message}</div>
           )}
         </div>
-
-        <button type="submit" className={styles.button}>
+        <Button type="submit" className={styles.button}>
           Зарегистрироваться
-        </button>
+        </Button>
         <RedirectLink curPage={links.signup} />
       </form>
     </div>
