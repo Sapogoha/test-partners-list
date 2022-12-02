@@ -11,7 +11,7 @@ import RedirectLink from '../RedirectLink/RedirectLink';
 import eye from '../../../assets/eye.svg';
 import eyeOff from '../../../assets/eyeOff.svg';
 
-import links from '../../../constants/links';
+import links from '../../../links';
 
 import styles from './SignUpForm.module.scss';
 

@@ -7,7 +7,7 @@ import PartnersPage from './pages/PartnersPage/PartnersPage';
 import PartnerPage from './pages/PartnerPage/PartnerPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
-import links from './constants/links';
+import links from './links';
 
 function App() {
   return (

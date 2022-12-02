@@ -6,11 +6,10 @@ const start: string = '/test-partners-list';
 
 const links: ILinks = {
   main: start,
+  partnerNoId: `${start}/partner`,
   partner: `${start}/partner/:id`,
   signin: `${start}/signin`,
   signup: `${start}/signup`,
-  product: `${start}/catalog/:id`,
-  contacts: `${start}/contacts`,
 };
 
 export default links;

@@ -29,6 +29,15 @@
   }
 }
 
+@mixin violetButton {
+  background-color: var(--color-violet);
+  border-radius: var(--border-radius-8);
+  color: var(--color-white);
+  @include font(var(--fs-16), var(--lh-22));
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+}
+
 @mixin form {
   .wrapper {
     .form {
@@ -78,12 +87,7 @@
       }
 
       .button {
-        background-color: var(--color-violet);
-        border-radius: var(--border-radius-8);
-        color: var(--color-white);
-        @include font(var(--fs-16), var(--lh-22));
-        padding-top: 1.3rem;
-        padding-bottom: 1.3rem;
+        @include violetButton;
       }
     }
   }
@@ -100,4 +104,29 @@
 
 @mixin link {
   color: var(--color-violet);
+}
+
+@mixin header {
+  text-align: center;
+  @include font(var(--fs-36), var(--lh-42));
+  padding-bottom: 1.6rem;
+  margin-top: 1.2rem;
+  @media only screen and (min-width: 500px) {
+    @include font(var(--fs-42), var(--lh-48));
+    margin-top: 0;
+  }
+  @media only screen and (min-width: 900px) {
+    @include font(var(--fs-64), var(--lh-75));
+  }
+}
+@mixin text {
+  text-align: center;
+  @include font(var(--fs-16), var(--lh-19));
+  padding-right: 2rem;
+  padding-left: 2rem;
+  @media only screen and (min-width: 500px) {
+    @include font(var(--fs-20), var(--lh-23));
+    margin-right: auto;
+    margin-left: auto;
+  }
 }

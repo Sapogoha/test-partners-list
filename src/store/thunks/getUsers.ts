@@ -9,7 +9,7 @@ interface IPartner {
 }
 
 interface IAPI {
-  data: any;
+  data: IPartner[];
   page: number;
   per_page: number;
   support: object;

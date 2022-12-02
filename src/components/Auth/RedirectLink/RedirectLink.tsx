@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './RedirectLink.module.scss';
 
-import links from '../../../constants/links';
+import links from '../../../links';
 
 function RedirectLink({ curPage }: any) {
   return (

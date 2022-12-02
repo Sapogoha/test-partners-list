@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../store/hooks';
 
-import Notification from '../../common/Notification/Notification';
+import Notification from '../../Notification/Notification';
 
-import links from '../../../constants/links';
+import links from '../../../links';
 
 import styles from './AuthLayout.module.scss';
 
@@ -35,9 +35,7 @@ function AuthLayout({ children }: Props) {
   return (
     <main className={styles.wrapper}>
       {children}
-      {loading && notification && (
-        <Notification type="loading" text="Загрузка" />
-      )}
+      {loading && notification && <Notification type="loading" />}
       {error && notification && <Notification type="error" text="Ошибка" />}
     </main>
   );

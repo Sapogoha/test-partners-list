@@ -3,54 +3,84 @@ import { useWindowSize } from 'usehooks-ts';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
+import Button from './Button/Button';
+import MainHeader from './MainHeader/MainHeader';
+import PartnerHeader from './PartnerHeader/PartnerHeader';
+
 import { removePartners } from '../../store/slices/partnersSlice';
 import { removeToken } from '../../store/slices/authSlice';
+import { removePartner } from '../../store/slices/partnerSlice';
 
 import logout from '../../assets/logout.svg';
+import back from '../../assets/back.svg';
 
-import links from '../../constants/links';
+import links from '../../links';
 
 import styles from './Header.module.scss';
 
-function Header() {
+type Props = {
+  img?: string;
+  name?: string;
+};
+
+function Header({ img, name }: Props) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { width } = useWindowSize();
   const { token } = useAppSelector((state) => state.auth);
 
-  const clickHandler = () => {
+  const clickExitHandler = () => {
     dispatch(removePartners());
     dispatch(removeToken());
     navigate(links.signin);
   };
 
-  const exitBtnBig = (
-    <button onClick={clickHandler} type="button" className={styles.btn}>
-      Выход
-    </button>
-  );
-
-  const exitBtnSmall = (
-    <button
-      onClick={clickHandler}
-      type="button"
-      className={`${styles.btn} ${styles['btn-small']}`}
-    >
-      <img src={logout} alt="кнопка - выход" />
-    </button>
-  );
-
-  const exitBtn = width > 499 ? exitBtnBig : exitBtnSmall;
+  const clickBackHandler = () => {
+    dispatch(removePartner());
+    navigate(links.main);
+  };
 
   return (
     <header className={styles.wrapper}>
-      <h1 className={styles.header}>Наша команда</h1>
-      <p className={styles.headerText}>
-        Это опытные специалисты, хорошо разбирающиеся во всех задачах, которые
-        ложатся на их плечи, и умеющие находить выход из любых, даже самых
-        сложных ситуаций.
-      </p>
-      {token && exitBtn}
+      <div className={styles.btnWrapper}>
+        {token && width > 499 ? (
+          <Button
+            type="button"
+            className={`${styles.btn}  ${styles['btn-exit']}`}
+            onClick={clickExitHandler}
+          >
+            Выход
+          </Button>
+        ) : (
+          <Button
+            onClick={clickExitHandler}
+            type="button"
+            className={`${styles.btn}  ${styles['btn-exit']}`}
+          >
+            <img src={logout} alt="кнопка - выход" />
+          </Button>
+        )}
+        {token && img && name && width > 499 && (
+          <Button
+            onClick={clickBackHandler}
+            type="button"
+            className={`${styles.btn}  ${styles['btn-back']}`}
+          >
+            Назад
+          </Button>
+        )}
+        {token && img && name && width < 500 && (
+          <Button
+            onClick={clickBackHandler}
+            type="button"
+            className={`${styles.btn}  ${styles['btn-back']}`}
+          >
+            <img src={back} alt="кнопка - назад" />
+          </Button>
+        )}
+      </div>
+      {!img && !name && <MainHeader />}
+      {img && name && <PartnerHeader img={img} name={name} />}
     </header>
   );
 }

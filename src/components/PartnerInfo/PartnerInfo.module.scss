@@ -1,0 +1,44 @@
+@import '../../scss/_mixins';
+
+.info {
+  padding: 3.3rem 1.6rem;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'contacts'
+    'aboutPartner';
+
+  @media only screen and (min-width: 700px) {
+    padding: 4rem 2rem;
+    grid-template-columns: auto 3rem auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'aboutPartner . contacts ';
+  }
+
+  @media only screen and (min-width: 900px) {
+    padding: 5rem 3rem;
+    grid-template-columns: auto 10rem 20rem;
+  }
+
+  @media only screen and (min-width: 1151px) {
+    max-width: 112rem;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 5fr 13rem 20rem 1fr;
+    grid-template-areas: 'aboutPartner . contacts . ';
+  }
+
+  .aboutPartner {
+    grid-area: aboutPartner;
+    .p {
+      @include font(var(--fs-16), var(--lh-22));
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+  .contacts {
+    grid-area: contacts;
+  }
+}

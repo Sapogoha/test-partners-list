@@ -3,13 +3,13 @@ import styles from './Notification.module.scss';
 
 type Props = {
   type: string;
-  text: string;
+  text?: string;
 };
 
 function Notification({ type, text }: Props) {
   return (
     <div className={`${styles.notification} ${styles[`notification-${type}`]}`}>
-      {text}
+      {type === 'loading' ? 'Идет загрузка' : text}
     </div>
   );
 }

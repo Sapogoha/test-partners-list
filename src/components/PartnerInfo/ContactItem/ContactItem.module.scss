@@ -1,0 +1,14 @@
+@import '../../../scss/_mixins';
+
+.contactItem {
+  display: flex;
+  .icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.8rem;
+  }
+  .contact {
+    @include font(var(--fs-16), var(--lh-22));
+    margin-bottom: 2.5rem;
+  }
+}
